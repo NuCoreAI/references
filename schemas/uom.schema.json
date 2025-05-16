@@ -1,5 +1,8 @@
 {
+  "description": "Simplified enumeration of units of measure. The format of the string is of the form: _human_readable_name_ | _id_ where _id_ is a unique identifier for the unit of measure. The id is used in the iox_schema_nodedef.json file to reference the unit of measure.",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "iox_schema_editor.json",
+  "title": "Simplified Unit of Measure (UOM) Schema",
   "type": "string",
   "enum": [
     "0-Off 100-On | 78",

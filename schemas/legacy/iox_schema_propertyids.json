@@ -1,4 +1,8 @@
 {
+  "description": "NO LONGER USED",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "iox_schema_cmd.json",
+  "title": "Command Schema",
   "type": "string",
   "enum": [
     "ACCX", "ACCY", "ACCZ", "ADRPST", "AIRFLOW", "ALARM", "ANGLPOS", "AQI", "ATMPRES", "AWAKE",

@@ -37,23 +37,41 @@ It can be used to extend the capabilities of the system, such as integrating wit
 
 * IoX **programs** are the heart of the system. They allow users to define conditions and actions for home automation tasks. Programs can be used to automate various tasks, such as turning lights on or off, adjusting thermostats, or sending notifications.
 * IoX programs are defined using a specific structure that includes the following components:
+
 1 **If**: The if section of a program contains the conditions that must be met for the actions in the then section to be executed. It is the first part of a program and is used to define the criteria for triggering actions.
+
 2 **Condition**: A condition is a statement that evaluates to true or false. It is used to determine whether an action should be taken in a program. 
+
 Conditions can be based on the state of a **Node**, the value of a property, result of a command, or even schedules.
+
 3 **Schedule**: A schedule is a time-based condition that can be used to trigger actions at specific times or intervals. It can be used to automate tasks based on time, such as turning lights on or off at certain times of the day.
+
 4 **Then**: The then section of a program is executed when the conditions in the if section are met. It contains the actions that should be taken when the conditions are satisfied.
+
 5 **Action**: An action is a command or set of commands that are executed when a condition is met. Actions can be used to control devices, send notifications, or perform other tasks including calling other programs.
+
 6 **Else**: The else section of a program is executed when the conditions in the if section are not met. It can be used to define alternative actions or behaviors when the primary conditions are not satisfied.
+
 6 **Event**: An event is a change in the state of a Node or property that can trigger actions in a program. Events can be based on various factors, such as time, user input, or changes in the environment.
+
 7 **Trigger**: A trigger is a specific condition or event that initiates the execution of a program. It can be based on various factors, such as time, user input, or changes in the environment.
+
 8 **Wait**: A wait action is used to pause the execution of a program for a specified amount of time. It can be used to create delays between actions or to synchronize actions with specific events.
+
 9 **Random**: A random action is used to introduce variability in the execution of a program. It can be used to create random delays or to select random values for actions.
+
 10 **And**: The and operator is used to combine multiple conditions in a program. All conditions combined with the and operator must be true for the action to be executed.
+
 11 **Or**: The or operator is used to combine multiple conditions in a program. At least one of the conditions combined with the or operator must be true for the action to be executed.
+
 12 **Paren**: The paren operator is used to group conditions in a program. It allows for more complex logical expressions by combining multiple conditions with and/or operators.
+
 13 **Schedule**: A schedule is a time-based condition that can be used to trigger actions at specific times or intervals. It can be used to automate tasks based on time, such as turning lights on or off at certain times of the day.
+
 14 **Status**: A status is a condition that checks the state of a Node or property. It can be used to determine whether an action should be taken based on the current state of the system.
+
 15 **Comment**: A comment is a note or annotation within a program that provides additional information or context. It is not executed as part of the program and is used for documentation purposes.
+
 16 **Parent**: The parent is the ID of the folder or program that contains the current program. It is used to organize programs and folders within the IoX system.
 
 

@@ -1,37 +1,43 @@
 {
+  "description": "This schema defines the structure of a node definition. A node definition describes the properties, commands, and links of a node. It is used to define the behavior and capabilities of a node in the system.",
+  "$schema": "http://json-schema.org/draft-07/schema#",	
+  "$id": "iox_schema_nodedef.json",
+  "title": "Node Definition Schema",
   "type": "object",
   "properties": {
     "id": {
-      "type": "string",
-      "description": "Unique identifier for the nodedef"
+      "description": "Unique identifier for the nodedef",
+      "type": "string"
     },
     "nls": {
-      "type": "string",
-      "description": "NLS reference string"
+      "description": "Human-readable name for the nodedef in a natural language",
+      "type": "string"
     },
     "icon": {
-      "type": "string",
-      "description": "Icon name for the nodedef (optional)"
+      "description": "Icon name for the nodedef (optional)",
+      "type": "string"
     },
     "properties": {
+      "description": "Array of property objects defining node attributes and properties",
       "type": "array",
-      "description": "Array of property objects defining node attributes",
       "items": {
         "type": "object",
         "properties": {
           "id": {
-            "$ref": "iox_schema_propertyids.json"
+            "description": "Unique identifier for the property. Id must be unique within the node definition.",
+            "type": "string"
           },
           "editor": {
+            "description": "Editor for the property. Editors define the constraints applied to the property such as uom, precisions, etc. The editor is a reference to an editor definition in the iox_schema_editor.json file.",
             "$ref": "iox_schema_editor.json#/definitions/editor_ref"
           },
           "name": {
-            "type": "string",
-            "description": "Human-readable name of the property"
+            "description": "Human-readable name of the property",
+            "type": "string"
           },
           "hide": {
-            "type": "boolean",
-            "description": "Whether the property is hidden (optional)"
+            "description": "Whether the property is hidden (optional)",
+            "type": "boolean"
           }
         },
         "required": ["id", "editor"],
@@ -39,23 +45,23 @@
       }
     },
     "cmds": {
-      "type": "object",
       "description": "Commands the node sends and accepts",
+      "type": "object",
       "properties": {
         "sends": {
-          "type": "array",
           "description": "Array of commands the node can send",
+          "type": "array",
           "items": {
-            "$ref": "iox_schema_cmd.json",
-            "description": "Each item references the command schema"
+            "description": "Each item references the command schema",
+            "$ref": "iox_schema_cmd.json"
           }
         },
         "accepts": {
-          "type": "array",
           "description": "Array of commands the node can accept",
+          "type": "array",
           "items": {
-            "$ref": "iox_schema_cmd.json",
-            "description": "Each item references the command schema"
+            "description": "Each item references the command schema",
+            "$ref": "iox_schema_cmd.json"
           }
         }
       },
@@ -63,19 +69,19 @@
       "additionalProperties": false
     },
     "links": {
+      "description": "Control and respond link references",
       "type": "object",
-      "description": "Control and response link references",
       "properties": {
         "ctl": {
-          "type": "array",
           "description": "Array of control link strings",
+          "type": "array",
           "items": {
             "type": "string"
           }
         },
         "rsp": {
-          "type": "array",
           "description": "Array of response link strings",
+          "type": "array",
           "items": {
             "type": "string"
           }

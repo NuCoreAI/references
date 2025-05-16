@@ -1,9 +1,12 @@
 {
+  "description": "This schema defines uoms in JSON format. A simpler version is in uom.schema.json",
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "iox_schema_uom.json",
+  "title": "Lean Unit of Measure (UOM) Schema",
   "definitions": {
     "UOM_ref": {
-      "type": "string",
-      "description": "References the 'id' field of a uom in the 'UOM' array"
+      "description": "References the 'id' field of a uom in the 'UOM' array",
+      "type": "string"
     },
     "UOM": {
       "title": "Lean Unit of Measure (UOM) Schema",
