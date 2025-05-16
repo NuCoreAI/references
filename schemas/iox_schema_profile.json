@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "timestamp": { "type": "string" },
+    "families": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/family" }
+    }
+  },
+  "required": ["timestamp", "families"],
+  "additionalProperties": false,
+  "$defs": {
+    "family": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "instances": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/instance" }
+        }
+      },
+      "required": ["id", "name", "instances"],
+      "additionalProperties": false
+    },
+    "instance": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "editors": {
+          "type": "array",
+          "items": { "$ref": "iox_schema_editor.json#/definitions/editor" }
+        },
+        "linkdefs": {
+          "type": "array",
+          "items": { "$ref": "iox_schema_linkdef.json" }
+        },
+        "nodedefs": {
+          "type": "array",
+          "items": { "$ref": "iox_schema_nodedef.json" }
+        }
+      },
+      "required": ["id", "name"],
+      "additionalProperties": false
+    }
+  }
+}

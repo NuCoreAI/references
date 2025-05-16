@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "editor": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "ranges": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "uom": {
+                    "$ref": "iox_schema_uom.json#/definitions/UOM_ref"
+                  },
+                  "subset": {
+                    "type": "string",
+                    "pattern": "^(?:-?\\d+|-?\\d+--?\\d+)(?:,(?:-?\\d+|-?\\d+--?\\d+))*$",
+                    "description": "A comma-separated list of integers or integer ranges (e.g., '-50--45,-15,0,1,2,3,7-16,20-25,29'). Values must be in numeric order (e.g., '10-17' is valid, '17-10' is invalid), and there must be no overlapping values (e.g., '1,2,3,3-8,9' is invalid due to overlap at '3'). The pattern enforces the syntax, but additional application logic is required to validate numeric order and non-overlap."
+                  },
+                  "names": {
+                    "type": "object",
+                    "patternProperties": {
+                      "^-?\\d+$": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "description": "Keys should correspond to integers valid within the range or subset, considering the unit defined by uom."
+                  }
+                },
+                "required": ["uom", "subset"]
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "uom": {
+                    "$ref": "iox_schema_uom.json#/definitions/UOM_ref"
+                  },
+                  "min": {
+                    "type": "number"
+                  },
+                  "max": {
+                    "type": "number"
+                  },
+                  "prec": {
+                    "type": "number"
+                  },
+                  "step": {
+                    "type": "number"
+                  },
+                  "names": {
+                    "type": "object",
+                    "patternProperties": {
+                      "^-?\\d+$": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "description": "Keys should correspond to integers valid within the range or subset, considering the unit defined by uom."
+                  }
+                },
+                "required": ["uom", "min", "max"]
+              }
+            ]
+          },
+          "uniqueItems": true,
+          "description": "Each entry in the 'ranges' array must have a unique 'uom' value across all subset and minmax entries, enforced by application logic beyond this schema."
+        }
+      },
+      "required": ["id", "ranges"]
+    },
+    "editor_ref": {
+      "type": "string",
+      "description": "References the 'id' field of an editor in the 'editors' array"
+    }
+  }
+}

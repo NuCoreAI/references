@@ -1,0 +1,90 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the nodedef"
+    },
+    "nls": {
+      "type": "string",
+      "description": "NLS reference string"
+    },
+    "icon": {
+      "type": "string",
+      "description": "Icon name for the nodedef (optional)"
+    },
+    "properties": {
+      "type": "array",
+      "description": "Array of property objects defining node attributes",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "iox_schema_propertyids.json"
+          },
+          "editor": {
+            "$ref": "iox_schema_editor.json#/definitions/editor_ref"
+          },
+          "name": {
+            "type": "string",
+            "description": "Human-readable name of the property"
+          },
+          "hide": {
+            "type": "boolean",
+            "description": "Whether the property is hidden (optional)"
+          }
+        },
+        "required": ["id", "editor"],
+        "additionalProperties": false
+      }
+    },
+    "cmds": {
+      "type": "object",
+      "description": "Commands the node sends and accepts",
+      "properties": {
+        "sends": {
+          "type": "array",
+          "description": "Array of commands the node can send",
+          "items": {
+            "$ref": "iox_schema_cmd.json",
+            "description": "Each item references the command schema"
+          }
+        },
+        "accepts": {
+          "type": "array",
+          "description": "Array of commands the node can accept",
+          "items": {
+            "$ref": "iox_schema_cmd.json",
+            "description": "Each item references the command schema"
+          }
+        }
+      },
+      "required": ["sends", "accepts"],
+      "additionalProperties": false
+    },
+    "links": {
+      "type": "object",
+      "description": "Control and response link references",
+      "properties": {
+        "ctl": {
+          "type": "array",
+          "description": "Array of control link strings",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rsp": {
+          "type": "array",
+          "description": "Array of response link strings",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["ctl", "rsp"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["id", "properties", "cmds"],
+  "additionalProperties": false
+}

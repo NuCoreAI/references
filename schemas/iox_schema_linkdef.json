@@ -1,0 +1,83 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the linkdef"
+    },
+    "protocol": {
+      "type": "string",
+      "description": "Protocol used by the linkdef"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name for the linkdef"
+    },
+    "cmd": {
+      "type": "boolean",
+      "description": "Indicates whether the linkdef is a command (optional)"
+    },
+    "format": {
+      "type": "string",
+      "description": "Format string for the linkdef (optional)"
+    },
+    "parameters": {
+      "type": "array",
+      "description": "Array of parameter objects (optional, not allowed if cmd is true)",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier for the parameter"
+          },
+          "editor": {
+            "editor": { "$ref": "iox_schema_editor.json#/definitions/editor_ref" },
+            "description": "Editor type for the parameter"
+          },
+          "optional": {
+            "type": "boolean",
+            "description": "Whether the parameter is optional"
+          },
+          "name": {
+            "type": "string",
+            "description": "Human-readable name for the parameter"
+          }
+        },
+        "required": ["id", "editor"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["id", "protocol"],
+  "additionalProperties": false,
+  "if": {
+    "properties": {
+      "cmd": { "const": true }
+    },
+    "required": ["cmd"]
+  },
+  "then": {
+    "not": {
+      "required": ["parameters"]
+    }
+  },
+  "else": {
+    "properties": {
+      "parameters": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "editor": { "$ref": "iox_schema_editor.json#/definitions/editor_ref" },
+            "optional": { "type": "boolean" },
+            "name": { "type": "string" }
+          },
+          "required": ["id", "editor"],
+          "additionalProperties": false
+        }
+      }
+    }
+  }
+}

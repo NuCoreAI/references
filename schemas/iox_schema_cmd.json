@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "description": "This schema defines the structure of commands that a node (defined by node definition) and send or accept",
+  "properties": {
+    "id": { "type": "string", "description":"The id for the command. Id must be unique within the node definition." },
+    "name": { "type": "string" },
+    "format": { "type": "string" },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "editor": { "$ref": "iox_schema_editor.json#/definitions/editor_ref" },
+          "name": { "type": "string" },
+          "init": { "type": "string" },
+          "optional": { "type": "boolean" }
+        },
+        "required": ["id", "editor"]
+      }
+    }
+  },
+  "required": ["id"]
+}
