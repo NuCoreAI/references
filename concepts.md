@@ -16,13 +16,16 @@ in the system.
 6. **Editors**: Editors are used to render a value or allow selection. They define allowed values through one or more ranges. Each range must have a unique UOM within the editor.  An editor is used to render a value or allow selection. It defines allowed values through one or more **range**. Each **range** must have a unique **UOM** within the editor. **range** with precision 0 can have named values (key/label pairs).
 7. **Range**: Range describes the permissible range of allowed values in an **Editor**. There are 2 types of **range** 
 7.1 **Min/Max**: Is a **range** that defines a continuous range with 'min', 'max', **precision**, and **step** attributes. 
-7.2 **Subset**: Is a **rnage** that defines a discrete set of allowed values (always with precision 0) using spans (e.g., '0-5') and individual values (e.g., '7,9') separated by commas, like '0-5,7,9,11-14'.
+7.2 **Subset**: Is a **range** that defines a discrete set of allowed values (always with precision 0) using spans (e.g., '0-5') and individual values (e.g., '7,9') separated by commas, like '0-5,7,9,11-14'.
 8. **Unit of Measure (UOM)**: UOM is a standard unit used to measure a property. It can represent various types of measurements, such as temperature, humidity, or power consumption.
 9. **NLS**: NLS stands for Natural Language Support. It is used to provide human-readable names and descriptions for properties, commands, and events in IoX. This allows users to interact with the system in a more intuitive way. 
 Additionally, NLS enables AI agents to understand/classify things based on their names and not their types. As such, a very important concept in the **Typeless** paradigm.
 10. **Plugin**: A plugin is a software component that adds specific features or functionality to IoX using **Nodedef** structure. 
 It can be used to extend the capabilities of the system, such as integrating with third-party devices or services.
 11. **Store**: Plugins are stored in a **Store**. A store is a repository for storing and managing plugins. It allows for easy installation, updates, and management of plugins by developers.
+12. **Family**: Family is a collection of nodedefs for a specific thing (device, service, etc.). For instance, Z-Wave is a **Family** and so is Zigbee. Any **Plugin** is a **Family**. 
+13. **Profile**: Profile is a running instance of a **Family** . In most cases, multiple instances of a **Family** can run at the same time. Each instance will have a different **Instance ID**. 
+14. **Profiles**: Profiles is a complete configuration of an **IoX** system at runtime. In short, a collection of **Profile**s.
 
 
 * IoX architecture as a whole comprises the follwing components and concepts:
